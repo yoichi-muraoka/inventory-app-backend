@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.annotation.Generated;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +26,7 @@ public class Item {
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2022-10-07T13:06:14.0245753+09:00", comments="Source field: inventory_app_db..items.note")
     private String note;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2022-10-07T13:06:14.0245753+09:00", comments="Source field: inventory_app_db..items.registered_at")
     private Date registeredAt;
 
