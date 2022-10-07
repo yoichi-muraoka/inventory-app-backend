@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -69,6 +70,12 @@ public class ItemApiController {
 		item.setPlaceId(placeId);
 		itemService.editItem(item);
 		return ResponseEntity.ok().body("edited an item successfully");
+	}
+	
+	@DeleteMapping("/items/{id}")
+	public ResponseEntity<String> deleteItem(@PathVariable Integer id) {
+		itemService.deleteItemById(id);
+		return ResponseEntity.ok().body("deleted an item successfully");
 	}
 
 }
