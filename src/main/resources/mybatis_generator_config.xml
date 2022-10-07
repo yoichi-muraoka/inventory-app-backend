@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="generator_config" targetRuntime="MyBatis3DynamicSql">
+
+		<!-- マッパーインターフェースに@Mapperアノテーションを付与 -->
+		<plugin
+			type="org.mybatis.generator.plugins.MapperAnnotationPlugin" />
+
+		<!-- DB接続設定 -->
+		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306" userId="root" password="" />
+
+		<!-- ドメインクラスの設定 -->
+		<javaModelGenerator
+			targetPackage="com.example.app.domain"
+			targetProject="InventoryApp/src/main/java" />
+
+		<!-- マッパーインターフェースの設定 -->
+		<javaClientGenerator
+			targetPackage="com.example.app.mapper"
+			targetProject="InventoryApp/src/main/java" />
+			
+		<!-- コードを生成するテーブルを指定 -->
+		<table catalog="inventory_app_db" tableName="places"
+			domainObjectName="Place" mapperName="PlaceMapper" />
+		<table catalog="inventory_app_db" tableName="items"
+			domainObjectName="Item" mapperName="ItemMapper" />
+
+	</context>
+</generatorConfiguration>
