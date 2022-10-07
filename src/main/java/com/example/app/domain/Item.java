@@ -1,9 +1,14 @@
 package com.example.app.domain;
 
 import java.util.Date;
+
 import javax.annotation.Generated;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Item {
+	
     @Generated(value="org.mybatis.generator.api.MyBatisGenerator", date="2022-10-07T13:06:14.0235838+09:00", comments="Source field: inventory_app_db..items.id")
     private Integer id;
 
@@ -81,4 +86,9 @@ public class Item {
     public void setRegisteredAt(Date registeredAt) {
         this.registeredAt = registeredAt;
     }
+    
+	@Getter
+	@Setter
+	private Place place;
+	
 }

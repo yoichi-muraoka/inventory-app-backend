@@ -1,13 +1,14 @@
 package com.example.app.mapper;
 
 import static com.example.app.mapper.ItemDynamicSqlSupport.*;
-import static org.mybatis.dynamic.sql.SqlBuilder.isEqualTo;
+import static org.mybatis.dynamic.sql.SqlBuilder.*;
 
-import com.example.app.domain.Item;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+
 import javax.annotation.Generated;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
@@ -28,6 +29,8 @@ import org.mybatis.dynamic.sql.util.mybatis3.CommonDeleteMapper;
 import org.mybatis.dynamic.sql.util.mybatis3.CommonInsertMapper;
 import org.mybatis.dynamic.sql.util.mybatis3.CommonUpdateMapper;
 import org.mybatis.dynamic.sql.util.mybatis3.MyBatis3Utils;
+
+import com.example.app.domain.Item;
 
 @Mapper
 public interface ItemMapper extends CommonCountMapper, CommonDeleteMapper, CommonInsertMapper<Item>, CommonUpdateMapper {
@@ -174,4 +177,9 @@ public interface ItemMapper extends CommonCountMapper, CommonDeleteMapper, Commo
             .where(id, isEqualTo(row::getId))
         );
     }
+    
+    @SelectProvider(type=SqlProviderAdapter.class, method="select")
+    @ResultMap("joinPlace")
+    List<Item> selectManyJoinPlace(SelectStatementProvider selectStatement);
+
 }
